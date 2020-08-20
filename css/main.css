@@ -240,102 +240,22 @@ html {
   --on-primary-dark: white;
 }
 
-/* Sections */
-
-
-
-p {
-  max-width: 75ch;
-}
-
-header,
-footer,
-section {
-  flex-grow: 1;
-  padding: 3rem;
-  box-sizing: border-box;
-}
-
-section {
-  max-width: 72rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 72em) {
-  header,
-  footer {
-    padding-left: calc(0.5 * (100% - 72rem) + 3rem);
-    padding-right: calc(0.5 * (100% - 72rem) + 3rem);
-  }
-}
-
-footer {
-  margin-top: auto;
-  color: var(--on-primary-dark);
-  background: var(--primary-dark);
-}
-
 body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-footer {
-}
-
-.hero {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+body {
+  height: 100%;
+  padding: 6rem 2rem;
+  box-sizing: border-box;
   color: var(--on-primary);
   background: var(--primary) no-repeat 50% 15% / cover;
   background-image: url('../img/joanna-kosinska-1_CMoFsPfso-unsplash.jpg');
 }
 
-.hero > nav {
-  display: none;
-}
-
-.hero-message {
+h1, p {
   width: 100%;
-  font-size: 2rem;
-  line-height: 1.25;
+  margin: 0 1.5rem 0;
 }
-
-section {
-  position: relative;
-}
-
-.illustrated-section:nth-of-type(odd) {
-  padding-right: 16rem;
-}
-
-.illustrated-section:nth-of-type(even) {
-  padding-left: 16rem;
-}
-
-.illustrated-section-image {
-  position: absolute;
-  top: 3rem;
-  width: 10rem;
-}
-
-.illustrated-section:nth-of-type(even) .illustrated-section-image {
-  left: 3rem;
-}
-
-
-.illustrated-section:nth-of-type(odd) .illustrated-section-image {
-  right: 3rem;
-}
-
-@media (min-width: 72em) {
-  .illustrated-section:nth-of-type(odd) {
-    padding-right: calc(0.5 * (100% - 72rem) + 16rem);
-  }
-
-  .illustrated-section:nth-of-type(even) {
-    padding-left: calc(0.5 * (100% - 72rem) + 16rem);
-  }
-}
-

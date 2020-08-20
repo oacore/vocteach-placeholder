@@ -8,13 +8,12 @@
  */
 
 /* ==========================================================================
-   Base styles: opinionated defaults
+   Reset
    ========================================================================== */
 
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+html,
+body {
+  height: 100%;
 }
 
 /*
@@ -35,19 +34,6 @@ html {
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
 }
 
 /*
@@ -84,11 +70,20 @@ textarea {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Typography
    ========================================================================== */
 
+html {
+  font-family: roboto, -apple-system, blinkmacsystemfont, 'Segoe UI',
+    'Helvetica Neue', arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 100%;
+  line-height: 1.5;
+  color: #212121;
+}
+
 /* ==========================================================================
-   Helper classes
+   Helpers
    ========================================================================== */
 
 /*
@@ -147,37 +142,9 @@ textarea {
   visibility: hidden;
 }
 
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: " ";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
-   Modify as content requires.
    ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
 
 @media print,
   (-webkit-min-device-pixel-ratio: 1.25),
@@ -258,6 +225,117 @@ textarea {
   h2,
   h3 {
     page-break-after: avoid;
+  }
+}
+
+/* Setup */
+
+:root {
+  --primary: #395BC4;
+  --primary-dark: #2742A4;
+  --plimary-light: #4F78E5;
+
+  --on-primary: white;
+  --on-primary-light: white;
+  --on-primary-dark: white;
+}
+
+/* Sections */
+
+
+
+p {
+  max-width: 75ch;
+}
+
+header,
+footer,
+section {
+  flex-grow: 1;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 72em) {
+  header,
+  footer {
+    padding-left: calc(0.5 * (100% - 72rem) + 3rem);
+    padding-right: calc(0.5 * (100% - 72rem) + 3rem);
+  }
+}
+
+footer {
+  margin-top: auto;
+  color: var(--on-primary-dark);
+  background: var(--primary-dark);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+}
+
+.hero {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  color: var(--on-primary);
+  background: var(--primary) no-repeat 50% 15% / cover;
+  background-image: url('../img/joanna-kosinska-1_CMoFsPfso-unsplash.jpg');
+}
+
+.hero > nav {
+  display: none;
+}
+
+.hero-message {
+  width: 100%;
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+section {
+  position: relative;
+}
+
+.illustrated-section:nth-of-type(odd) {
+  padding-right: 16rem;
+}
+
+.illustrated-section:nth-of-type(even) {
+  padding-left: 16rem;
+}
+
+.illustrated-section-image {
+  position: absolute;
+  top: 3rem;
+  width: 10rem;
+}
+
+.illustrated-section:nth-of-type(even) .illustrated-section-image {
+  left: 3rem;
+}
+
+
+.illustrated-section:nth-of-type(odd) .illustrated-section-image {
+  right: 3rem;
+}
+
+@media (min-width: 72em) {
+  .illustrated-section:nth-of-type(odd) {
+    padding-right: calc(0.5 * (100% - 72rem) + 16rem);
+  }
+
+  .illustrated-section:nth-of-type(even) {
+    padding-left: calc(0.5 * (100% - 72rem) + 16rem);
   }
 }
 

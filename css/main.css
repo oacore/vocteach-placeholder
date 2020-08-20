@@ -69,6 +69,44 @@ textarea {
   resize: vertical;
 }
 
+
+
+/* ==========================================================================
+   Setup
+   ========================================================================== */
+
+/* Colours */
+
+:root {
+  --primary: #395BC4;
+  --primary-dark: #2742A4;
+  --plimary-light: #4F78E5;
+
+  --on-primary: white;
+  --on-primary-light: white;
+  --on-primary-dark: white;
+}
+
+/* Text */
+
+:root {
+  --text-spacer: 0 0 1.5rem;
+}
+
+/* Sections */
+
+:root {
+  --section-padding-y: 3rem;
+  --section-padding-x: 3rem;
+}
+
+@media (min-width: 72rem) {
+  :root {
+    --section-padding-x: calc(0.5 * (100% - 72rem) + 3rem);
+  }
+}
+
+
 /* ==========================================================================
    Typography
    ========================================================================== */
@@ -81,6 +119,159 @@ html {
   line-height: 1.5;
   color: #212121;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5, 
+h6 {
+  margin: var(--text-spacer);
+  color: #212121;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 0.75;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+p {
+  padding: var(--text-padding);
+  max-width: 70ch;
+}
+
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer,
+section {
+  position: relative;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  box-sizing: border-box;
+}
+
+footer {
+  margin-top: auto;
+  color: var(--on-primary-dark);
+  background: var(--primary-dark);
+}
+
+/* Hero */
+
+.hero {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  color: var(--on-primary);
+  background: var(--primary) no-repeat 50% 15% / cover;
+  background-image: url('../img/joanna-kosinska-1_CMoFsPfso-unsplash.jpg');
+}
+
+.hero > nav {
+  display: none;
+}
+
+.hero-message {
+  width: 100%;
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+/* Illustrated sections */
+
+:root {
+  --section-image-size: 4rem;
+}
+
+/* Some random value */
+@media (min-width: 80ch) {
+  :root {
+    --section-image-size: 10rem;
+  }
+}
+
+.illustrated-section {
+  padding-top: calc(var(--section-padding-y) + var(--section-image-size) + 1.5rem);
+}
+
+.illustrated-section-image {
+  position: absolute;
+  margin: 0 !important;
+  top: var(--section-padding-y);
+  left: var(--section-padding-x); /* calc(50% - var(--section-image-size) / 2); */
+  width: var(--section-image-size);
+}
+
+@media (min-width: 80ch) {
+  .illustrated-section {
+    padding-top: var(--section-padding-y);
+  }
+
+  .illustrated-section > * {
+    margin-right: calc(var(--section-image-size) + 2rem);
+  }
+
+  .illustrated-section:nth-of-type(odd) > * {
+    margin-left: calc(var(--section-image-size) + 2rem);
+    margin-right: 0;
+  }
+
+  .illustrated-section-image {
+    left: auto;
+    right: var(--section-padding-x);
+  }
+
+  .illustrated-section:nth-of-type(odd) .illustrated-section-image {
+    right: auto;
+    left: var(--section-padding-x);
+  }
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: calc(var(--section-padding-y) - 0.75rem) calc(var(--section-padding-x) - 1.5rem)
+}
+
+footer > * {
+  margin: 0.75rem 1.5rem;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer-logo {
+  display: block;
+  height: 3rem;
+}
+
+.footer-logo img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
 
 /* ==========================================================================
    Helpers
@@ -132,25 +323,6 @@ html {
   position: static;
   white-space: inherit;
   width: auto;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/* ==========================================================================
-   These examples override the primary ('mobile first') styles.
-   ========================================================================== */
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
@@ -227,115 +399,3 @@ html {
     page-break-after: avoid;
   }
 }
-
-/* Setup */
-
-:root {
-  --primary: #395BC4;
-  --primary-dark: #2742A4;
-  --plimary-light: #4F78E5;
-
-  --on-primary: white;
-  --on-primary-light: white;
-  --on-primary-dark: white;
-}
-
-/* Sections */
-
-
-
-p {
-  max-width: 75ch;
-}
-
-header,
-footer,
-section {
-  flex-grow: 1;
-  padding: 3rem;
-  box-sizing: border-box;
-}
-
-section {
-  max-width: 72rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 72em) {
-  header,
-  footer {
-    padding-left: calc(0.5 * (100% - 72rem) + 3rem);
-    padding-right: calc(0.5 * (100% - 72rem) + 3rem);
-  }
-}
-
-footer {
-  margin-top: auto;
-  color: var(--on-primary-dark);
-  background: var(--primary-dark);
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-}
-
-.hero {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  color: var(--on-primary);
-  background: var(--primary) no-repeat 50% 15% / cover;
-  background-image: url('../img/joanna-kosinska-1_CMoFsPfso-unsplash.jpg');
-}
-
-.hero > nav {
-  display: none;
-}
-
-.hero-message {
-  width: 100%;
-  font-size: 2rem;
-  line-height: 1.25;
-}
-
-section {
-  position: relative;
-}
-
-.illustrated-section:nth-of-type(odd) {
-  padding-right: 16rem;
-}
-
-.illustrated-section:nth-of-type(even) {
-  padding-left: 16rem;
-}
-
-.illustrated-section-image {
-  position: absolute;
-  top: 3rem;
-  width: 10rem;
-}
-
-.illustrated-section:nth-of-type(even) .illustrated-section-image {
-  left: 3rem;
-}
-
-
-.illustrated-section:nth-of-type(odd) .illustrated-section-image {
-  right: 3rem;
-}
-
-@media (min-width: 72em) {
-  .illustrated-section:nth-of-type(odd) {
-    padding-right: calc(0.5 * (100% - 72rem) + 16rem);
-  }
-
-  .illustrated-section:nth-of-type(even) {
-    padding-left: calc(0.5 * (100% - 72rem) + 16rem);
-  }
-}
-

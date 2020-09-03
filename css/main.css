@@ -303,13 +303,15 @@ footer {
 
 .logo {
   padding: 1.25rem 1.5rem;
-  margin-left: -1.5rem;
+  margin: 0 0 0 -1.5rem;
   color: currentColor;
   transition: box-shadow 150ms;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-.logo:hover,
-.logo:focus {
+.logo:link:hover,
+.logo:link:focus {
   box-shadow: inset 0 -4px currentColor;
   color: currentColor;
 }

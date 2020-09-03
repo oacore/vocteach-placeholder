@@ -468,22 +468,24 @@ footer a:focus {
   height: 100%;
 }
 
+/* Grid */
 
-/* ==========================================================================
-   Customisation
-   ========================================================================== */
-
-#subscribe {
+.row {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 -1.5rem -1.5rem;
 }
 
-#subscribe h2 {
-  width: 100%;
+.col {
+  margin: 0 1.5rem 1.5rem;
 }
 
-#subscribe .subsection {
-  flex: 1 0 20%;
+.col-7 {
+  flex-grow: 7;
+}
+
+.col-5 {
+  flex-grow: 5;
 }
 
 
